@@ -64,9 +64,18 @@
 
     // Toggle Dark Mode
     const darkModeToggle = document.getElementById("darkModeToggle");
+
+    // Check if dark mode is already enabled from localStorage
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    }
+
     darkModeToggle.addEventListener("click", () => {
-      // Toggle the dark mode class on the document body
-      document.documentElement.classList.toggle("dark");
+      const isDark = document.documentElement.classList.toggle("dark");
+
+      // Save the dark mode state in localStorage
+      localStorage.setItem('darkMode', isDark);
     });
   </script>
 </body>
